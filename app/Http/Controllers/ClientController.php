@@ -26,20 +26,28 @@ class ClientController extends Controller
         return view('user_template.addtocart');
     }
 
-    public function AddProductToCart(Request $request){
-        $product_price = $request->price;
-        $quantity = $request->quantity;
-        $price = $product_price * $quantity;
-            Cart::insert([
-                'product_id' => $request->product_id,
-                'user_id' => Auth::id(),
-                'quantity' => $request->quantity,
-                'price' => $price
-            ]);
-        
-        
-        return redirect()->route('addtocart')->with('messege', 'Your Item has been added to cart.');
+    public function AddProductToCart(Request $request)
+{
+    $product_id = $request->product_id;
+    $product_price = $request->price;
+    $quantity = $request->quantity;
+    $price = $product_price * $quantity;
+
+    // Check if product_id is not null and the product exists
+    if ($product_id && Product::find($product_id)) {
+        Cart::insert([
+            'product_id' => $product_id,
+            'user_id' => Auth::id(),
+            'quantity' => $quantity,
+            'price' => $price
+        ]);
+
+        return redirect()->route('addtocart')->with('message', 'Your item has been added to the cart!');
+    } else {
+        return redirect()->route('addtocart')->with('message', 'Invalid product. Please try again.');
     }
+}
+
 
     public function Checkout(){
         return view ('user_template.checkout');

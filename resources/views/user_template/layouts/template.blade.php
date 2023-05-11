@@ -67,7 +67,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-sm-12">
-                     <div class="logo"><a href="index.html"><img src="{{asset('home/images/logo.png')}}"></a></div>
+                     <div class="logo"><a href="index.html"><img src="{{asset('home/images/Rocky1.png')}}"></a></div>
                   </div>
                </div>
             </div>
@@ -149,7 +149,7 @@
       <!-- footer section start -->
       <div class="footer_section layout_padding">
          <div class="container">
-            <div class="footer_logo"><a href="index.html"><img src="{{asset('home/images/footer-logo.png')}}"></a></div>
+            <div class="footer_logo"><a href="index.html"><img src="{{asset('home/images/Rocky1.png')}}"></a></div>
             <div class="input_bt">
                <input type="text" class="mail_bt" placeholder="Your Email" name="Your Email">
                <span class="subscribe_bt" id="basic-addon2"><a href="#">Subscribe</a></span>

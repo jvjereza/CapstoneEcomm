@@ -27,7 +27,6 @@
                     @csrf
                     <input type="hidden" placeholder="{{$product->id}}" name="product_id">
                     <div class="form-group">
-                    <input type="hidden" value="{{$product->price}}" name="price">
                     <label for="quantity">How Many?</label>
                     <input class="form-control" type="number" min="1" placeholder="1" name="quantity">
                     </div>
@@ -54,7 +53,7 @@
                           <div class="tshirt_img"><img src="{{$product->product_img}}"></div>
                           <div class="btn_main">
                              <div class="buy_bt">
-                                <form action="{{route('addproducttocart', $product->id)}}" method="POST">
+                                <form action="{{route('addproducttocart')}}" method="POST">
                                     @csrf
                                     <input type="hidden" placeholder="{{$product->id}}" name="product_id">
                                     <input type="hidden" placeholder="{{$product->price}}" name="price">

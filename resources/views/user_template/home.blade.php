@@ -1,7 +1,7 @@
 @extends('user_template.layouts.template')
 @section('page_title')
 Rocky
-@endsection
+@endsection()
 @section('main-content')
 <div class="fashion_section">
    <div id="main_slider">
@@ -16,10 +16,10 @@ Rocky
                            <div class="tshirt_img"><img src="{{$product->product_img}}"></div>
                            <div class="btn_main">
                               <div class="buy_bt">
-                                 <form action="{{route('addproducttocart', $product->id)}}" method="POST">
+                                 <form action="{{route('addproducttocart')}}" method="POST">
                                  @csrf
                                  <input type="hidden" value="{{$product->id}}" name="product_id">
-                                 <input type="hidden" value="{{$product->price}}" name="price">
+                                 <input type="hidden" value="{{$price->price}}" name="price">  
                                  <input type="hidden" value="1" name="quantity">
                                  <br>
                                  <input class="btn btn-warning" type="submit" value="Add To Cart">
@@ -321,4 +321,4 @@ Rocky
 <!-- jewellery  section end -->
 
 <!-- fashion section start -->
-@endsection
+@endsection()

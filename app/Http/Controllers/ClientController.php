@@ -23,7 +23,9 @@ class ClientController extends Controller
     }   
 
     public function AddToCart(){
-        return view('user_template.addtocart');
+        $userid = Auth::id();
+        $cart_items = Cart::where('user_id', $userid)->get();
+        return view('user_template.addtocart', compact('cart_items'));
     }
 
     public function AddProductToCart(Request $request)
@@ -33,7 +35,7 @@ class ClientController extends Controller
     $quantity = $request->quantity;
     $price = $product_price * $quantity;
 
-    // Check if product_id is not null and the product exists
+
     if ($product_id && Product::find($product_id)) {
         Cart::insert([
             'product_id' => $product_id,

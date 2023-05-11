@@ -18,6 +18,9 @@
                 <th>Price</th>
                 <th>Action</th>
               </tr>
+              @php
+                $total = 0;
+              @endphp
               @foreach ($cart_items as $item)
               <tr>
                 @php
@@ -27,11 +30,25 @@
                 <td><img src="{{asset($img)}}" style="height: 150px" alt="{{$product_name}}"></td>
                 <td>{{$product_name}}</td>
                 <td>{{$item->quantity}}</td>
-                <td>{{$item->price}}</td>
-                <td><a href="" class="btn btn-warning">Remove</a></td>
+                <td>₱{{$item->price}}</td>
+                <td><a href="{{route('removeitem', $item->id)}}" class="btn btn-warning">Remove</a></td>
               </tr>
                 
-              @endforeach
+              @php
+                $total = $total + $item->price;
+              @endphp
+
+            @endforeach
+            @if ($total >0)
+              <tr>
+                <td></td>
+                <td></td>
+                <td>Total</td>
+                <td>₱{{$total}}</td>
+                <td><a href="{{route('shippingaddress')}}" class="btn btn-primary">Checkout</a></td>                 
+                @endif
+              </tr>
+              
             </table>
           </div>
         </div>

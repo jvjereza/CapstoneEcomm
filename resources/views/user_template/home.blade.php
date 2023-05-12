@@ -16,15 +16,21 @@ Rocky
                            <div class="tshirt_img"><img src="{{$product->product_img}}"></div>
                            <div class="btn_main">
                               <div class="buy_bt">
-                                 <form action="{{route('addproducttocart')}}" method="POST">
-                                 @csrf
-                                 <input type="hidden" value="{{$product->id}}" name="product_id">
-                                 <input type="hidden" value="{{$price->price}}" name="price">  
-                                 <input type="hidden" value="1" name="quantity">
-                                 <br>
-                                 <input class="btn btn-warning" type="submit" value="Add To Cart">
-                             </form>  
-                           </div>
+                                 <form action="{{ route('addproducttocart') }}" method="POST">
+                                     @csrf
+                                     <input type="hidden" value="{{ $product->id }}" name="product_id">
+                             
+                                     @php
+                                         $price = $product->price;
+                                     @endphp
+                             
+                                     <input type="hidden" value="{{ $price }}" name="price">
+                                     <input type="hidden" value="1" name="quantity">
+                                     <br>
+                                     <input class="btn btn-warning" type="submit" value="Add To Cart">
+                                 </form>
+                             </div>
+                             
                               <div class="seemore_bt"><a href="{{route('singleproduct', [$product->id, $product->slug])}}">See More</a></div>
                            </div>
                         </div>
